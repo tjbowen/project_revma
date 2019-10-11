@@ -1,2 +1,4 @@
-SELECT *
-FROM hr.streams
+ALTER TABLE streams
+ALTER COLUMN id TYPE VARCHAR
+ SELECT *
+ FROM hr.streams

@@ -38,15 +38,15 @@ app.post('/streams_backend', (req, res) => {
     if(!newDescription){
         res.status(411).send({ message: "No description entered"})
     }
-    let query = `INSERT INTO hr.streams(title, description, id)
-                 VALUES (${newTitle}, ${newDescription}, ${newId})
+    let query = `INSERT INTO streams (title, description, id)
+                 VALUES ('${newTitle}', '${newDescription}', '${newId}')
                  RETURNING id`;
     client.query(query, (err, result) => {
         if(err){
-            console.log(err.stack)
+            console.log("err.stack is ", err.stack)
             res.end()
         }
-        console.log(result)
+        console.log("results are ", result)
         res.send(result)
     })
 })
